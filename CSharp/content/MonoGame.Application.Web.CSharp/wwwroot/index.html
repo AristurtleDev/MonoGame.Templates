@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MGNamespace</title>
+    <link rel="icon" href="./favicon.ico">
+    <style>
+        html,
+        body {
+            min-width: 100%;
+            min-height: 100%;
+            margin: 0;
+        }
+
+        #monogame-host {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        #monogame-host[data-canvas-resize-policy="Project"],
+        #monogame-host[data-canvas-resize-policy="None"] {
+            position: relative;
+            inset: auto;
+            display: inline-block;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #000;
+        }
+
+        #monogame-host[data-canvas-resize-policy="Project"] #canvas,
+        #monogame-host[data-canvas-resize-policy="None"] #canvas {
+            width: auto;
+            height: auto;
+        }
+
+        #monogame-host-status {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            left: 1rem;
+            margin: 0;
+            padding: 0.75rem 1rem;
+            background: #882323;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <main id="monogame-host"
+          data-application-name="MGNamespace"
+          data-runtime-script-uri="./_framework/dotnet.js"
+          data-host-exports-type-name="MGNamespace.HostExports"
+          data-main-assembly-name="MGNamespace.dll">
+        <canvas id="canvas" width="1280" height="720" aria-label="MonoGame game canvas"></canvas>
+        <p id="monogame-host-status" hidden role="alert"></p>
+    </main>
+    <noscript><p>MonoGame.Web requires JavaScript.</p></noscript>
+    <script type="module">
+        await import("./_monogame/monogame-web-host.js");
+    </script>
+</body>
+</html>
