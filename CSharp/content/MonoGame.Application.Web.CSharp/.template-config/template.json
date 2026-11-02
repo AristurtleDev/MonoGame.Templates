@@ -17,14 +17,14 @@
         }
     ],
     "sourceName": "MGNamespace",
-    "preferNameDirectory": "true",
+    "preferNameDirectory": true,
     "description": "A MonoGame browser application using the WebGL2 backend.",
     "postActions": [
         {
             "description": "Restore NuGet packages required by this project.",
             "manualInstructions": [
                 {
-                    "text": "Run 'dotnet restore'"
+                    "text": "Install the WebAssembly tools workload with 'dotnet workload install wasm-tools', then run 'dotnet restore'."
                 }
             ],
             "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
