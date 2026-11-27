@@ -169,11 +169,11 @@
 </head>
 <body>
     <main id="monogame-host">
-        <canvas id="canvas" aria-label="MonoGame game canvas"></canvas>
-        <section id="monogame-loading" aria-label="MonoGame loading">
+        <canvas id="canvas" aria-label="MGNamespace game canvas"></canvas>
+        <section id="monogame-loading" aria-label="MGNamespace loading">
             <div class="monogame-startup-panel">
                 <img class="monogame-brand-logo" src="./mglogo.svg" alt="MonoGame">
-                <p id="monogame-loading-message" role="status" aria-live="polite">Starting MonoGame...</p>
+                <p id="monogame-loading-message" role="status" aria-live="polite">Starting MGNamespace...</p>
                 <div class="monogame-loading-indicator" aria-hidden="true"></div>
             </div>
         </section>
@@ -181,14 +181,14 @@
             <div class="monogame-startup-panel">
                 <div class="monogame-brand">
                     <img class="monogame-brand-mark" src="./favicon.ico" alt="">
-                    <span id="monogame-error-title">MonoGame could not start</span>
+                    <span id="monogame-error-title">MGNamespace could not start</span>
                 </div>
                 <p id="monogame-error-message"></p>
                 <button id="monogame-reload" type="button">Reload page</button>
             </div>
         </section>
     </main>
-    <noscript><p>MonoGame.Web requires JavaScript.</p></noscript>
+    <noscript><p>MGNamespace requires JavaScript.</p></noscript>
     <script type="module">
         const root = document.getElementById("monogame-host");
         const canvas = document.getElementById("canvas");
@@ -223,7 +223,7 @@
             });
         }
         catch (error) {
-            showError(error instanceof Error ? error.message : "The MonoGame browser host could not start.");
+            showError(error instanceof Error ? error.message : "The MGNamespace browser host could not start.");
         }
     </script>
 </body>
