@@ -11,6 +11,5 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.Native" Version="3.8.*" />
     <PackageReference Include="MonoGame.Runtime.Browser.WebGL2" Version="3.8.*" />
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.*" />
   </ItemGroup>
 </Project>
