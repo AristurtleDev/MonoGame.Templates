@@ -1,10 +1,9 @@
 <Project>
-  <!-- Browser static assets resolve during PrepareResources, before BeforeCompile. -->
-  <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'browser-wasm'">
-    <PrepareResourcesDependsOn>BuildContent;$(PrepareResourcesDependsOn)</PrepareResourcesDependsOn>
-  </PropertyGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="$(MSBuildThisFileDirectory)Assets\**\*" />
+  </ItemGroup>
 
-  <Target Name="BuildContent" BeforeTargets="BeforeCompile">
+  <Target Name="BuildContent" AfterTargets="BeforeBuild" Condition="'$(DesignTimeBuild)' != 'true'">
     <MSBuild Projects="$(MSBuildThisFileDirectory)MGNamespace.csproj" Targets="Build" RemoveProperties="Configuration;TargetFramework;RuntimeIdentifier;RuntimeIdentifiers">
       <Output TaskParameter="TargetOutputs" ItemName="_ContentBuilderAssembly" />
     </MSBuild>
@@ -19,7 +18,7 @@
     <Exec Command="&quot;$(ContentCommand)&quot; $(ContentArgs)" WorkingDirectory="$(MSBuildThisFileDirectory)..\" CustomErrorRegularExpression="\[E\] .+" CustomWarningRegularExpression="\[W\] .+" />
    </Target>
   <Target Name="AddGeneratedContentAssets"
-    AfterTargets="BuildContent">
+    AfterTargets="BuildContent" Condition="'$(DesignTimeBuild)' != 'true'">
     <ItemGroup>
       <GeneratedAsset Include="$([MSBuild]::NormalizePath('$(ProjectDir)', '$(OutputPath)'))Content\**\*"
         Condition="'$(MonoGamePlatform)' != 'WebGL2'" />
